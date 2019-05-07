@@ -9,6 +9,7 @@ public class GPS : MonoBehaviour
 
     public float latitude;
     public float longitude;
+    public float attitude;
     public float timer = 0.0f;
 
     private void Start()
@@ -16,6 +17,7 @@ public class GPS : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         Input.location.Start();
+        Input.compass.enabled = true;
     }
 
     private void Update()
@@ -61,5 +63,7 @@ public class GPS : MonoBehaviour
 
         latitude = Input.location.lastData.latitude;
         longitude = Input.location.lastData.longitude;
+        attitude = Input.compass.trueHeading; 
+
     }
 }

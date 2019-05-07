@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,7 @@ public class UpdateGPSText : MonoBehaviour
     private void Update()
     {
         coordenadas.text = "Lat: " + GPS.Instance.latitude.ToString() + " Long: " +
-            GPS.Instance.longitude.ToString();
+            GPS.Instance.longitude.ToString() + Environment.NewLine + " Att: "+GPS.Instance.attitude.ToString();
         coor.text = GPS.Instance.timer.ToString();
     }                                                                                                                                                                                                                                       
 }
