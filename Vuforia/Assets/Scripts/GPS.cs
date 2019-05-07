@@ -15,8 +15,7 @@ public class GPS : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-        Input.location.Start();
+        //DontDestroyOnLoad(gameObject);
         Input.compass.enabled = true;
     }
 
@@ -24,46 +23,39 @@ public class GPS : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (timer <= -5)
+        if (timer <= -3)
         {
-            StartCoroutine(StartLocationService());
-            timer = 0;
+            StartLocationService();
         }
 
 
     }
-    private IEnumerator StartLocationService()
+    private void StartLocationService()
     {
 
         if (!Input.location.isEnabledByUser)
         {
-            Debug.Log("El ususario no ha habilitado el GPS");
-            
-        }
+            Input.location.Start();
+            int maxWait = 20;
+            while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
+            {
+                new WaitForSeconds(1);
+                maxWait--;
+            }
+            if (Input.location.status == LocationServiceStatus.Failed)
+            {
+                Debug.Log("El servicio de localizacion fallo");
 
-       
-        int maxWait = 20;
-        while(Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-        {
-            yield return new WaitForSeconds(1);
-            maxWait--;
-        }
+            }
+            else
+            {
+                latitude = Input.location.lastData.latitude;
+                longitude = Input.location.lastData.longitude;
+                attitude = Input.compass.trueHeading;
+            }
 
-        if (maxWait <= 0)
-        {
-            Debug.Log("Tiempo agotado");
-            
+            Input.location.Stop();
         }
-
-        if(Input.location.status == LocationServiceStatus.Failed)
-        {
-            Debug.Log("El servicio de localizacion fallo");
-           
-        }
-
-        latitude = Input.location.lastData.latitude;
-        longitude = Input.location.lastData.longitude;
-        attitude = Input.compass.trueHeading; 
 
     }
 }
