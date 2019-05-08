@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,47 +14,27 @@ public class GPS : MonoBehaviour
     private void Start()
     {
         Instance = this;
-        //DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(gameObject);
         Input.compass.enabled = true;
     }
 
     private void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer <= -3)
-        {
-            StartLocationService();
-        }
-
-
-    }
-    private void StartLocationService()
-    {
-
-        if (!Input.location.isEnabledByUser)
+        if (timer <= 0)
         {
             Input.location.Start();
-            int maxWait = 20;
-            while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
-            {
-                new WaitForSeconds(1);
-                maxWait--;
-            }
-            if (Input.location.status == LocationServiceStatus.Failed)
-            {
-                Debug.Log("El servicio de localizacion fallo");
-
-            }
-            else
-            {
-                latitude = Input.location.lastData.latitude;
-                longitude = Input.location.lastData.longitude;
-                attitude = Input.compass.trueHeading;
-            }
-
+            latitude = Input.location.lastData.latitude;
+            longitude = Input.location.lastData.longitude;
+            //attitude = Input.compass.trueHeading;
             Input.location.Stop();
+            timer = 3;
         }
-
+        else
+        {
+            timer -= 0.1f;
+        }
+        
     }
+
 }
+    

@@ -12,8 +12,8 @@ public class UpdateGPSText : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        coordenadas.text = "Lat: " + GPS.Instance.latitude.ToString() + " Long: " +
-            GPS.Instance.longitude.ToString() + Environment.NewLine + " Att: "+GPS.Instance.attitude.ToString();
-        coor.text = GPS.Instance.timer.ToString();
+        coordenadas.text = "Lat: "+ GPS.Instance.latitude + Environment.NewLine +
+                           "Long: " + GPS.Instance.longitude + Environment.NewLine +
+                           "Timer: " + GPS.Instance.timer;
     }                                                                                                                                                                                                                                       
 }
