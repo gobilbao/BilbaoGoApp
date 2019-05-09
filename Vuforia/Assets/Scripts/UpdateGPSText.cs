@@ -1,54 +1,80 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
+static class Constants
+{
+    public const decimal Encontrada = 0.00005m;
+    public const decimal Pista = 0.00010m;
+    
+}
+
 
 public class UpdateGPSText : MonoBehaviour
 {
     public TextMesh coordenadas;
     public TextMesh coor;
-    private string coordenadasOtro = "43,31238|-3,005846";
+    private string coordenadasOtro = "43.31237|-3.00576";
     private string encontrado;
-    private float X = 0;
-     private float Y = 0;
-    int menorX = 1;
-    int menorY = 1;
+    
+
+
 
     private void calcularDistancia()
     {
-       
+
+        int valorY= 1;
+        int valorX = 1;
         
-        string[] coordendasoto =coordenadasOtro.Split('|');
-        if (coordendasoto.Length < 2)
+        string[] coordenadasSitio =coordenadasOtro.Split('|');
+
+        if (coordenadasSitio.Length < 2)
         {
-            Debug.Log("No contiene lso parametros correctos");
+            Debug.Log("No contiene los parametros correctos");
             return;
         }
 
-        Y = float.Parse(coordendasoto[0]);
-        X = float.Parse(coordendasoto[1]);
+      
+        decimal Y = decimal.Parse(coordenadasSitio[0]);
+        decimal X = decimal.Parse(coordenadasSitio[1]);
 
-        
-
-        if (Y > 0)
-        {
-            menorY = -1;
+        if (Y < 0){
+            valorY = -1;
         }
-        if(X > 0)
+        if(X < 0)
         {
-            menorX = -1;
+            valorX = -1;
         }
 
+        Debug.Log("PistaY: " + (Y - Constants.Pista * valorY) + "|" + (Y + Constants.Pista * valorY));
+        Debug.Log("PistaX: " + (X - Constants.Pista * valorX) + "|" + (X + Constants.Pista * valorX));
 
-        if(GPS.Instance.latitude<Y+(0.00001*menorY) && GPS.Instance.longitude<X+(0.00001*menorX))
+
+        if ((GPS.Instance.latitude> (Y - (Constants.Encontrada*valorY)) && GPS.Instance.latitude < (Y + (Constants.Encontrada * valorY))) && ((GPS.Instance.longitude < (X - (Constants.Encontrada*valorX) ) ) && (GPS.Instance.longitude > (X + (Constants.Encontrada*valorX)))))
         {
-            encontrado = "Encontrado";
+
+            encontrado = (Y - (Constants.Pista * valorY))+"Encontrado"+(Y + (Constants.Pista * valorY));
+      
+
+        }else if ((GPS.Instance.latitude > (Y - (Constants.Pista * valorY)) && GPS.Instance.latitude < (Y + (Constants.Pista * valorY))) && ((GPS.Instance.longitude < (X - (Constants.Pista * valorX)) && GPS.Instance.longitude > (X + (Constants.Pista * valorX)))))
+        {
+            
+            encontrado = "Pista";
+            
+
+
         }
         else
         {
             encontrado = "No encontrado";
         }
+
+
+
+
+
+
+
+
     }
    
     private void Update()
@@ -56,8 +82,7 @@ public class UpdateGPSText : MonoBehaviour
         calcularDistancia();
         coordenadas.text = "Lat: "+ GPS.Instance.latitude + Environment.NewLine +
                            "Long: " + GPS.Instance.longitude + Environment.NewLine +
-                           "Timer: " + GPS.Instance.timer + Environment.NewLine +
-                           "Estatua: " + encontrado + Environment.NewLine +
-                           "X: " + (X + (0.00001 * menorX)) + " Y:"+ (Y + (0.00001 * menorY));
+                           "Estatua: " + encontrado + Environment.NewLine+
+                           "X: "+ coordenadasOtro;
     }                                                                                                                                                                                                                                       
 }

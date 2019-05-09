@@ -6,8 +6,9 @@ public class GPS : MonoBehaviour
 {
     public static GPS Instance { set; get; }
 
-    public float latitude;
-    public float longitude;
+    
+    public decimal latitude;
+    public decimal longitude;
     public float attitude;
     public float timer = 0.0f;
 
@@ -22,11 +23,18 @@ public class GPS : MonoBehaviour
     {
         if (timer <= 0)
         {
+
+          
+            
             Input.location.Start();
-            latitude = Input.location.lastData.latitude;
-            longitude = Input.location.lastData.longitude;
-            //attitude = Input.compass.trueHeading;
+            latitude = (decimal)Input.location.lastData.latitude;
+            longitude = (decimal)Input.location.lastData.longitude;
+            attitude = Input.compass.trueHeading;
             Input.location.Stop();
+            /*
+             latitude = float.Parse(Input.location.lastData.latitude.ToString().Replace('.', ','));
+             longitude = float.Parse(Input.location.lastData.longitude.ToString().Replace('.',','));
+             //*/
             timer = 3;
         }
         else
