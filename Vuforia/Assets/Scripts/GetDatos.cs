@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class NewBehaviourScript : MonoBehaviour
+
+public class GetDatos : MonoBehaviour
 {
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        WWW ruta = new WWW ("https://bilbaogo-2c61c.firebaseio.com/.json");
+
+        WWW ruta = new WWW("https://bilbaogo-2c61c.firebaseio.com/data.json");
         yield return ruta;
-        string datos = ruta.    
+        string datos = ruta.text;
+        Debug.Log(CreateFromJSON(datos).Nombre);
+        
+       
+
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public static Punto CreateFromJSON(string jsonString)
     {
-        
+        return JsonUtility.FromJson<Punto>(jsonString);
     }
 }
