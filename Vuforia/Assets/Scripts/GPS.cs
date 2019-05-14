@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class GPS : MonoBehaviour
 {
+    //public static GPS Instance { set; get; }
 
     public float attitude;
     public float timer = 0.0f;
+    
 
 
     private void Start()
@@ -14,6 +16,7 @@ public class GPS : MonoBehaviour
        
         DontDestroyOnLoad(gameObject);
         Input.compass.enabled = true;
+        //Instance = this;
     }
 
     private void Update()
@@ -21,8 +24,6 @@ public class GPS : MonoBehaviour
         if (timer <= 0)
         {
 
-          
-            
             Input.location.Start();
             Data.Instance.latitude = (decimal)Input.location.lastData.latitude;
             Data.Instance.longitude = (decimal)Input.location.lastData.longitude;

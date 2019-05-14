@@ -6,14 +6,20 @@ using UnityEngine.Networking;
 
 public class GetDatos : MonoBehaviour
 {
+    public static GetDatos Instance { set; get; }
+
+    
+    
+  
     // Start is called before the first frame update
     void Start()
     {
+        Instance = this;
         
 
         string screen_URL = "https://bilbaogo-2c61c.firebaseio.com/data/[numero]/sitio.json";
         
-        StartCoroutine(RecogerDatos(screen_URL,Data.Instance.id/*, encodedString*/));
+        StartCoroutine(RecogerDatos(screen_URL,Data.Instance.id));
     }
 
 
@@ -24,7 +30,7 @@ public class GetDatos : MonoBehaviour
         for (int i = 0; i < lista.Count; i++)
         {
             url = url.Replace("[numero]", lista[i]);
-            //Debug.Log(url);
+            Debug.Log(url);
             
          
             var uwr = new UnityWebRequest(url, "GET");
@@ -37,7 +43,7 @@ public class GetDatos : MonoBehaviour
             }
             else
             {
-                //Debug.Log(uwr.downloadHandler.text);
+                Debug.Log(uwr.downloadHandler.text);
                 string[] corchete = uwr.downloadHandler.text.Split('{', '}');
                 string[] comas = corchete[1].Split(',');
                 string _nombre = null, _ubicacion = null, _informacion = null, _pista = null;
