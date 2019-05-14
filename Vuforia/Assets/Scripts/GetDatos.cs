@@ -7,20 +7,69 @@ using UnityEngine.Networking;
 public class GetDatos : MonoBehaviour
 {
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
-
-        WWW ruta = new WWW("https://bilbaogo-2c61c.firebaseio.com/data.json");
-        yield return ruta;
-        string datos = ruta.text;
-        Debug.Log(CreateFromJSON(datos).Nombre);
         
-       
 
+        string screen_URL = "https://bilbaogo-2c61c.firebaseio.com/data/[numero]/sitio.json";
+        
+        StartCoroutine(RecogerDatos(screen_URL,Data.Instance.id/*, encodedString*/));
     }
 
-    public static Punto CreateFromJSON(string jsonString)
+
+    IEnumerator RecogerDatos(string url,List<string> lista)
     {
-        return JsonUtility.FromJson<Punto>(jsonString);
+
+        
+        for (int i = 0; i < lista.Count; i++)
+        {
+            url = url.Replace("[numero]", lista[i]);
+            //Debug.Log(url);
+            
+         
+            var uwr = new UnityWebRequest(url, "GET");
+            uwr.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+            uwr.SetRequestHeader("Content-Type", "application/json");
+            yield return uwr.SendWebRequest();
+            if (uwr.isNetworkError)
+            {
+                //Debug.Log("Error While Sending: " + uwr.error);
+            }
+            else
+            {
+                //Debug.Log(uwr.downloadHandler.text);
+                string[] corchete = uwr.downloadHandler.text.Split('{', '}');
+                string[] comas = corchete[1].Split(',');
+                string _nombre = null, _ubicacion = null, _informacion = null, _pista = null;
+               
+                for(int o = 0; o < comas.Length; o++)
+                {
+                   string[] datos =  comas[o].Split(':', '"');
+                    switch (datos[1])
+                    {
+                        case ("nombre"):
+                            _nombre = datos[4];
+                            break;
+                        case ("infor"):
+                            _informacion = datos[4];
+                            break;
+                        case ("pista"):
+                            _pista = datos[4];
+                            break;
+                        case ("ubicacion"):
+                            _ubicacion = datos[4];
+                            break;
+                    }
+                }
+
+                Data.Instance.puntos.Add(new Punto { Nombre = _nombre, Ubicacion = _ubicacion, Informacion = _informacion, Pista = _pista });
+
+
+
+            }
+            url = "https://bilbaogo-2c61c.firebaseio.com/data/[numero]/sitio.json";
+        }
+        
     }
+    
 }

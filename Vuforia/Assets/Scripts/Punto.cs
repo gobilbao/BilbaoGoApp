@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Punto
 {
+   
+
     private string nombre;
     private string ubicacion;
     private string informacion;
@@ -14,8 +16,8 @@ public class Punto
     public string Informacion { get => informacion; set => informacion = value; }
     public string Pista { get => pista; set => pista = value; }
 
-
     
+
 
 
 }
