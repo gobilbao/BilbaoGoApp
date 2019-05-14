@@ -87,6 +87,7 @@ public class UpdateGPSText : MonoBehaviour
                            "Nombre estatua: "+ Data.Instance.puntos[0].Nombre + Environment.NewLine +
                            "Pista: " + Data.Instance.puntos[0].Pista + Environment.NewLine +
                            "Ubicacion: " + Data.Instance.puntos[0].Ubicacion + Environment.NewLine +
-                           "Informacion: " + Data.Instance.puntos[0].Informacion + Environment.NewLine;
+                           "Informacion: " + Data.Instance.puntos[0].Informacion + Environment.NewLine+
+                           "Giroscopio:" + Data.Instance.ath.ToString() ;
     }                                                                                                                                                                                                                                       
 }

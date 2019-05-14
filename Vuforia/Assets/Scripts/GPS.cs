@@ -16,6 +16,7 @@ public class GPS : MonoBehaviour
        
         DontDestroyOnLoad(gameObject);
         Input.compass.enabled = true;
+        
         //Instance = this;
     }
 
@@ -25,6 +26,7 @@ public class GPS : MonoBehaviour
         {
 
             Input.location.Start();
+            Data.Instance.ath = Input.compass.trueHeading;
             Data.Instance.latitude = (decimal)Input.location.lastData.latitude;
             Data.Instance.longitude = (decimal)Input.location.lastData.longitude;
             attitude = Input.compass.trueHeading;

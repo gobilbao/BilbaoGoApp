@@ -14,7 +14,7 @@ public class Data : MonoBehaviour
 
     public decimal latitude = 0;
     public decimal longitude = 0;
-
+    public float ath;
     #endregion
 
     #region GetDatos
@@ -32,6 +32,7 @@ public class Data : MonoBehaviour
         {
             id.Add(i.ToString());
         }
+
         Instance = this;
     }
 
