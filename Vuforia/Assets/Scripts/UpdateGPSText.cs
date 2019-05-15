@@ -15,7 +15,7 @@ public class UpdateGPSText : MonoBehaviour
     public TextMesh coor;
     private string coordenadasOtro;
     private string encontrado;
-    
+    public GameObject flecha;
 
 
 
@@ -81,6 +81,9 @@ public class UpdateGPSText : MonoBehaviour
     private void Update()
     {
         calcularDistancia();
+        
+        flecha.transform.rotation = Quaternion.Euler(0, -Data.Instance.ath, 0);
+
         coordenadas.text = "Lat: "+ Data.Instance.latitude + Environment.NewLine +
                            "Long: " + Data.Instance.longitude + Environment.NewLine +
                            "Estatua: " + encontrado + Environment.NewLine+
