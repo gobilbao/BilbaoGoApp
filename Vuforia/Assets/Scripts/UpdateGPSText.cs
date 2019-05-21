@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-static class Constants
+static class Constantes
 {
     public const decimal Encontrada = 0.00005m;
     public const decimal Pista = 0.00010m;
