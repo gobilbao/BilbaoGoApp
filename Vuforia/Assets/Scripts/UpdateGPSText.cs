@@ -5,7 +5,6 @@ static class Constantes
 {
     public const decimal Encontrada = 0.00005m;
     public const decimal Pista = 0.00010m;
-    
 }
 
 
@@ -15,8 +14,6 @@ public class UpdateGPSText : MonoBehaviour
     public TextMesh coor;
     private string coordenadasOtro;
     private string encontrado;
-    
-
 
 
     private void calcularDistancia()
@@ -77,17 +74,20 @@ public class UpdateGPSText : MonoBehaviour
 
     */
     }
-   
+
     private void Update()
     {
-        calcularDistancia();
-        coordenadas.text = "Lat: "+ Data.Instance.latitude + Environment.NewLine +
+        // calcularDistancia();
+
+        /*coordenadas.text = "Lat: " + Data.Instance.latitude + Environment.NewLine +
                            "Long: " + Data.Instance.longitude + Environment.NewLine +
-                           "Estatua: " + encontrado + Environment.NewLine+
-                           "Nombre estatua: "+ Data.Instance.puntos[0].Nombre + Environment.NewLine +
+                           "Estatua: " + encontrado + Environment.NewLine +
+                           "Nombre estatua: " + Data.Instance.puntos[0].Nombre + Environment.NewLine +
                            "Pista: " + Data.Instance.puntos[0].Pista + Environment.NewLine +
                            "Ubicacion: " + Data.Instance.puntos[0].Ubicacion + Environment.NewLine +
-                           "Informacion: " + Data.Instance.puntos[0].Informacion + Environment.NewLine+
-                           "Giroscopio:" + Data.Instance.ath.ToString() ;
-    }                                                                                                                                                                                                                                       
+                           "Informacion: " + Data.Instance.puntos[0].Informacion + Environment.NewLine +
+                           "Giroscopio:" + Data.Instance.ath.ToString();
+                           */
+    }
+
 }

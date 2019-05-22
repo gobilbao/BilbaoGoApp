@@ -793,9 +793,10 @@
           </e>
           <e p="MoverBrujula.cs" t="Include" />
           <e p="Punto.cs" t="Include" />
+          <e p="SpawnOnMap.cs" t="Include" />
+          <e p="StartGameManagerMapScene.cs" t="Include" />
           <e p="UpdateGPSText.cs" t="Include" />
         </e>
-        <e p="StartGameManagerMapScene.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="Vuforia" t="Include">
             <e p="Prueba.xml" t="Include" />

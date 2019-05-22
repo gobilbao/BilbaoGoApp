@@ -207,6 +207,7 @@ GameObject:
   - component: {fileID: 211489912}
   - component: {fileID: 211489914}
   - component: {fileID: 211489915}
+  - component: {fileID: 211489916}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -238,7 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f27a73ed2712b4482838b9d8535164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DebugPoints: {fileID: 1590777364}
+  statuePrefab: {fileID: 2673672531405240983, guid: af9684e317ecfcb4eb36d8182b029da4,
+    type: 3}
   DebugCoord: {fileID: 0}
   Map_TriggerRA: {fileID: 0}
   RA_LatLong: {x: 0, y: 0, z: 0}
@@ -283,6 +285,21 @@ MonoBehaviour:
   numero: 3
   ath: 0
   id: []
+--- !u!114 &211489916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211489910}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d29760d57dd2be4c8ef3fd7a3cde2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _locationStrings: []
+  _spawnScale: 100
+  _markerPrefab: {fileID: 0}
 --- !u!1 &366818447
 GameObject:
   m_ObjectHideFlags: 0

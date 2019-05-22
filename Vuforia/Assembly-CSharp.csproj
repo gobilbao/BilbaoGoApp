@@ -509,8 +509,9 @@
     <Compile Include="Assets\Scripts\MainMenuScene\GameManager.cs" />
     <Compile Include="Assets\Scripts\MoverBrujula.cs" />
     <Compile Include="Assets\Scripts\Punto.cs" />
+    <Compile Include="Assets\Scripts\SpawnOnMap.cs" />
+    <Compile Include="Assets\Scripts\StartGameManagerMapScene.cs" />
     <Compile Include="Assets\Scripts\UpdateGPSText.cs" />
-    <Compile Include="Assets\StartGameManagerMapScene.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteDevice.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditor.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditorInterface.cs" />

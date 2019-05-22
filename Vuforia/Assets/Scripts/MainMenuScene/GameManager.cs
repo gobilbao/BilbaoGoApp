@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +7,9 @@ public class GameManager : MonoBehaviour
 {
     #region MAINMENU
 
-    public Text DebugPoints;
-
+    bool initialize = true;
+    public GameObject statuePrefab;
+    
     #endregion
 
     #region MAP
@@ -36,27 +36,41 @@ public class GameManager : MonoBehaviour
     private void Update()
 
     {
-        if(DebugPoints!=null && mapPoints!=null)
+        
+        if(initialize && mapPoints!=null)
         {
+            String coordinate;
+            String[] coordinates = new string[mapPoints.Count];
             for (int i = 0; i < mapPoints.Count-1; i++)
             {
-                DebugPoints.text =DebugPoints.text + mapPoints[i].Nombre + " " + mapPoints[i].Informacion + " " + mapPoints[i].Pista +
-                                   " " + mapPoints[i].Ubicacion + " \n ";
+                coordinate = mapPoints[i].Ubicacion.Split('|')[0] + "," + mapPoints[i].Ubicacion.Split('|')[1];
+                coordinates[i] = coordinate;
+                Debug.Log(i + coordinate);
             }
 
-            DebugPoints = null;
+            gameObject.GetComponent<SpawnOnMap>().LocationStrings = coordinates;
+            
+            if (statuePrefab != null)
+            {
+                gameObject.GetComponent<SpawnOnMap>().MarkerPrefab = statuePrefab;
+            }
+            else
+            {
+                throw new Exception("No Marker Prefab assigned on GameManager");
+            }
+            
+            initialize = false;
         }
     }
 
     public void changeToMapState()
     {
         Map_TriggerRA.onClick.AddListener(TriggerRA);
-        Debug.Log("ChangedToMapState");
+        gameObject.GetComponent<SpawnOnMap>().enabled = true;
     }
 
     public void TriggerRA()
     {
-        Debug.Log("TRIGGER_RA");
         GetComponent<ButtonActions>().Map_TriggerRA();
         DebugCoord.text = RA_LatLong.ToString();
     }
