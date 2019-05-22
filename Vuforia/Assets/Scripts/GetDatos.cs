@@ -80,7 +80,13 @@ public class GetDatos : MonoBehaviour
             }
             url = "https://bilbaogo-2c61c.firebaseio.com/data/[numero]/sitio.json";
         }
-        
+
+        sendDataToGameManager();
+
     }
-    
+
+    private void sendDataToGameManager()
+    {
+        gameObject.GetComponent<GameManager>().MapPoints = Data.Instance.puntos;
+    }
 }

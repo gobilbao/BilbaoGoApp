@@ -298,63 +298,6 @@
             </e>
           </e>
           <e p="Examples" t="Include">
-            <e p="1_DataExplorer" t="Include">
-              <e p="HighlightBuildings.cs" t="Include" />
-              <e p="Scripts" t="Include">
-                <e p="TextMeshOutline.cs" t="Include" />
-              </e>
-            </e>
-            <e p="2_AstronautGame" t="Include">
-              <e p="AstronautGame" t="Include">
-                <e p="Astronaut" t="Include">
-                  <e p="AstronautDirections.cs" t="Include" />
-                  <e p="AstronautMouseController.cs" t="Include" />
-                  <e p="CharacterMovement.cs" t="Include" />
-                  <e p="ProjectorLight.shader" t="Include" />
-                </e>
-                <e p="Building" t="Include">
-                  <e p="CharacterBuildingShader.shader" t="Include" />
-                </e>
-              </e>
-            </e>
-            <e p="3_POIPlacement" t="Include">
-              <e p="POIPlacementScriptExample.cs" t="Include" />
-            </e>
-            <e p="4_ReplaceFeatures" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="BlinkLight.cs" t="Include" />
-              </e>
-            </e>
-            <e p="5_Playground" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="DirectionsExample.cs" t="Include" />
-                <e p="ForwardGeocoderExample.cs" t="Include" />
-                <e p="LogLocationProviderData.cs" t="Include" />
-                <e p="RasterTileExample.cs" t="Include" />
-                <e p="ReverseGeocoderExample.cs" t="Include" />
-                <e p="VectorTileExample.cs" t="Include" />
-              </e>
-            </e>
-            <e p="6_ZoomableMap" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="SetCameraHeight.cs" t="Include" />
-                <e p="SpawnOnMap.cs" t="Include" />
-              </e>
-            </e>
-            <e p="7_Globe" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="DragRotate.cs" t="Include" />
-                <e p="SpawnOnGlobeExample.cs" t="Include" />
-              </e>
-            </e>
-            <e p="8_VoxelMap" t="Include">
-              <e p="Scripts" t="Include">
-                <e p="TextureScaler.cs" t="Include" />
-                <e p="VoxelData.cs" t="Include" />
-                <e p="VoxelFetcher.cs" t="Include" />
-                <e p="VoxelTile.cs" t="Include" />
-              </e>
-            </e>
             <e p="Scripts" t="Include">
               <e p="CameraBillboard.cs" t="Include" />
               <e p="CameraMovement.cs" t="Include" />
@@ -841,13 +784,18 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="ButtonActions.cs" t="Include" />
           <e p="Data.cs" t="Include" />
           <e p="GetDatos.cs" t="Include" />
           <e p="GPS.cs" t="Include" />
+          <e p="MainMenuScene" t="Include">
+            <e p="GameManager.cs" t="Include" />
+          </e>
           <e p="MoverBrujula.cs" t="Include" />
           <e p="Punto.cs" t="Include" />
           <e p="UpdateGPSText.cs" t="Include" />
         </e>
+        <e p="StartGameManagerMapScene.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="Vuforia" t="Include">
             <e p="Prueba.xml" t="Include" />
