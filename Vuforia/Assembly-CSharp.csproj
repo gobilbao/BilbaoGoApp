@@ -504,6 +504,8 @@
     <Compile Include="Assets\MapboxAR\Unity\Ar\SimpleAutomaticSynchronizationContextBehaviour.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\SnapAlignmentStrategy.cs" />
     <Compile Include="Assets\MapboxAR\Unity\Ar\Utilities\PlotRoute.cs" />
+    <Compile Include="Assets\Pista1TriggerScript.cs" />
+    <Compile Include="Assets\Pista2TriggerScript.cs" />
     <Compile Include="Assets\Scripts\ButtonActions.cs" />
     <Compile Include="Assets\Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\GetDatos.cs" />
@@ -515,6 +517,7 @@
     <Compile Include="Assets\Scripts\SpawnOnMap.cs" />
     <Compile Include="Assets\Scripts\StartGameManagerMapScene.cs" />
     <Compile Include="Assets\Scripts\UpdateGPSText.cs" />
+    <Compile Include="Assets\StatueScript.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteDevice.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditor.cs" />
     <Compile Include="Assets\UnityARInterface\ARRemote\Scripts\ARRemoteEditorInterface.cs" />

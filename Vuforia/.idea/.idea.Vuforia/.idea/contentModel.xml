@@ -786,6 +786,8 @@
             </e>
           </e>
         </e>
+        <e p="Pista1TriggerScript.cs" t="Include" />
+        <e p="Pista2TriggerScript.cs" t="Include" />
         <e p="Resources" t="Include">
           <e p="Mapbox" t="Include">
             <e p="MapboxConfiguration.txt" t="Include" />
@@ -806,6 +808,7 @@
           <e p="StartGameManagerMapScene.cs" t="Include" />
           <e p="UpdateGPSText.cs" t="Include" />
         </e>
+        <e p="StatueScript.cs" t="Include" />
         <e p="StreamingAssets" t="Include">
           <e p="Vuforia" t="Include">
             <e p="Prueba.xml" t="Include" />
