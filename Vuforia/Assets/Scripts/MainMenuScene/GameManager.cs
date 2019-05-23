@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour
             {
                 throw new Exception("No Marker Prefab assigned on GameManager");
             }
-            
             initialize = false;
         }
     }
@@ -67,6 +66,7 @@ public class GameManager : MonoBehaviour
     {
         Map_TriggerRA.onClick.AddListener(TriggerRA);
         gameObject.GetComponent<SpawnOnMap>().enabled = true;
+        
     }
 
     public void TriggerRA()
