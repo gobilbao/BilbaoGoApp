@@ -850,6 +850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debugRaButton: {fileID: 1381912468}
   debugCoord: {fileID: 926112429}
+  map: {fileID: 974472785749780164}
 --- !u!4 &1262375143
 Transform:
   m_ObjectHideFlags: 0
