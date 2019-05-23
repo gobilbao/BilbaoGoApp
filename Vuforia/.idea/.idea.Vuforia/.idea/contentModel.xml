@@ -126,6 +126,14 @@
             </e>
           </e>
         </e>
+        <e p="JSON" t="Include">
+          <e p="Editor" t="Include">
+            <e p="JSONChecker.cs" t="Include" />
+          </e>
+          <e p="JSONObject.cs" t="Include" />
+          <e p="README.txt" t="Include" />
+          <e p="VectorTemplates.cs" t="Include" />
+        </e>
         <e p="Mapbox" t="Include">
           <e p="Core" t="Include">
             <e p="cheap-ruler-cs" t="Include">
@@ -793,6 +801,7 @@
           </e>
           <e p="MoverBrujula.cs" t="Include" />
           <e p="Punto.cs" t="Include" />
+          <e p="RetrieveFirebaseData.cs" t="Include" />
           <e p="SpawnOnMap.cs" t="Include" />
           <e p="StartGameManagerMapScene.cs" t="Include" />
           <e p="UpdateGPSText.cs" t="Include" />

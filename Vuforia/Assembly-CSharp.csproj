@@ -137,6 +137,8 @@
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\ConversionHelper.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\IntPtrEqualityComparer.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Utility\MarshalingHelper.cs" />
+    <Compile Include="Assets\JSON\JSONObject.cs" />
+    <Compile Include="Assets\JSON\VectorTemplates.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\CheapRuler.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\DirectionResource.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Directions\Directions.cs" />
@@ -509,6 +511,7 @@
     <Compile Include="Assets\Scripts\MainMenuScene\GameManager.cs" />
     <Compile Include="Assets\Scripts\MoverBrujula.cs" />
     <Compile Include="Assets\Scripts\Punto.cs" />
+    <Compile Include="Assets\Scripts\RetrieveFirebaseData.cs" />
     <Compile Include="Assets\Scripts\SpawnOnMap.cs" />
     <Compile Include="Assets\Scripts\StartGameManagerMapScene.cs" />
     <Compile Include="Assets\Scripts\UpdateGPSText.cs" />
@@ -586,6 +589,7 @@
     <None Include="Assets\UnityARInterface\Examples\Common\Shaders\MobileOcclusion.shader" />
     <None Include="Assets\Vuforia\Shaders\CameraDiffuse.shader" />
     <None Include="Assets\UnityARInterface\Examples\Common\Shaders\InstancedSurfaceShader.shader" />
+    <None Include="Assets\JSON\readme.txt" />
     <None Include="Assets\Vuforia\Shaders\VertexLitWithZ.shader" />
     <None Include="Assets\Mapbox\Unity\Location\ExampleGpsTraces\Helsinki.txt" />
     <None Include="Assets\GoogleARCore\SDK\Materials\ARBackground.shader" />

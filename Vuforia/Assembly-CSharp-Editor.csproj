@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\ARCoreRequiredMenuItem.cs" />
     <Compile Include="Assets\GoogleARCore\SDK\Scripts\Editor\BuildHelper.cs" />
+    <Compile Include="Assets\JSON\Editor\JSONChecker.cs" />
     <Compile Include="Assets\Mapbox\Core\cheap-ruler-cs\Tests\Editor\MapboxUnitTests_CheapRulerCs.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tests\UnitTests\Editor\MapboxUnitTests_AngleSmoothing.cs" />
     <Compile Include="Assets\Mapbox\Core\mapbox-sdk-cs\Tests\UnitTests\Editor\MapboxUnitTests_BboxToGeoCoordinateBoundsConverter.cs" />

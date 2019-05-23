@@ -39,12 +39,13 @@ public class SpawnOnMap : MonoBehaviour
 
     void Start()
     {
-        _locations = new Vector2d[_locationStrings.Length];
+        Debug.Log("*-********************SpawnOnMAP");
+        _locations = new Vector2d[_locationStrings.Length-1];
         _spawnedObjects = new List<GameObject>();
-        for (int i = 0; i < _locationStrings.Length; i++)
+        for (int i = 0; i < _locationStrings.Length-1; i++)
         {
             var locationString = _locationStrings[i];
-            _locations[i] = Conversions.StringToLatLon(locationString);
+            _locations[i] = Conversions.StringToLatLon(locationString.Substring(1,locationString.Length-2));
             var instance = Instantiate(_markerPrefab);
             instance.transform.localPosition = _map.GeoToWorldPosition(_locations[i], true);
             instance.transform.localScale = new Vector3(_spawnScale, _spawnScale, _spawnScale);
