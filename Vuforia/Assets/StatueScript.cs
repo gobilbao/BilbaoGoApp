@@ -22,6 +22,7 @@ public class StatueScript : MonoBehaviour
         if (other.gameObject.transform.tag.Equals("Player"))
         {
             enablePista3();
+            Debug.Log("Ha entrado en pista3");
         }
     }
 
@@ -30,6 +31,7 @@ public class StatueScript : MonoBehaviour
         if (other.gameObject.transform.tag.Equals("Player"))
         {
             disablePista3();
+            Debug.Log("Ha salido de pista3");
         }
     }
 
@@ -37,7 +39,9 @@ public class StatueScript : MonoBehaviour
     {
         if (!btnPista2.IsActive() && !btnPista3.IsActive())
         {
-            btnPista1.enabled = true;
+            btnPista1.gameObject.SetActive(true);
+            GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 1;
+            GameObject.Find("GameManager").GetComponent<GameManager>().pistaForRA = punto;
         }
     }
     
@@ -45,36 +49,43 @@ public class StatueScript : MonoBehaviour
     {
         if (!btnPista3.IsActive())
         {
-            btnPista1.enabled = false;
-            btnPista2.enabled = true;
+            btnPista1.gameObject.SetActive(false);
+            btnPista2.gameObject.SetActive(true);
+            GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 2;
         }
     }
     
     public void enablePista3()
     {
-        btnPista1.enabled = false;
-        btnPista2.enabled = false;
-        btnPista3.enabled = true;
+        btnPista1.gameObject.SetActive(false);
+        btnPista2.gameObject.SetActive(false);
+        btnPista3.gameObject.SetActive(true);
+        GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 3;
+        
     }
 
     public void disablePista1()
     {
-        btnPista1.enabled = false;
-        btnPista2.enabled = false;
-        btnPista3.enabled = false;
+        btnPista1.gameObject.SetActive(false);
+        btnPista2.gameObject.SetActive(false);
+        btnPista3.gameObject.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<GameManager>().pistaForRA = null;
+        GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 0;
     }
     
     public void disablePista2()
     {
-        btnPista1.enabled = true;
-        btnPista2.enabled = false;
-        btnPista3.enabled = false;
+        btnPista1.gameObject.SetActive(true);
+        btnPista2.gameObject.SetActive(false);
+        btnPista3.gameObject.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 1;
     }
     
     public void disablePista3()
     {
-        btnPista1.enabled = false;
-        btnPista2.enabled = true;
-        btnPista3.enabled = false;
+        btnPista1.gameObject.SetActive(false);
+        btnPista2.gameObject.SetActive(true);
+        btnPista3.gameObject.SetActive(false);
+        GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 2;
     }
 }

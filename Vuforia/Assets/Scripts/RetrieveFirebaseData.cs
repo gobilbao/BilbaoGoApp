@@ -18,7 +18,7 @@ public class RetrieveFirebaseData : MonoBehaviour
         
         JSONObject json = new JSONObject(www.text);
         puntos = new List<Punto>();
-        for (int i = 0; i < json.Count-1; i++)
+        for (int i = 0; i < json.Count; i++)
         {
             Punto p = new Punto();
             p.Id = json[i].GetField("sitio").GetField("idSitio").ToString();

@@ -10,6 +10,7 @@ public class Pista2TriggerScript : MonoBehaviour
         if (other.gameObject.transform.tag.Equals("Player"))
         {
             gameObject.transform.parent.GetComponent<StatueScript>().enablePista2();
+            Debug.Log("Ha entrado en pista2");
         }
     }
     
@@ -17,7 +18,8 @@ public class Pista2TriggerScript : MonoBehaviour
     {
         if (other.gameObject.transform.tag.Equals("Player"))
         {
-            gameObject.transform.parent.GetComponent<StatueScript>().disablePista3();
+            gameObject.transform.parent.GetComponent<StatueScript>().disablePista2();
+            Debug.Log("Ha salido de pista2");
         }
     }
 }

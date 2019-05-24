@@ -11,14 +11,39 @@ public class ButtonActions : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void Map_TriggerRA()
+    public void Map_TriggerRA_Pista1()
     {
         var map = LocationProviderFactory.Instance.mapManager;
 
         Vector3 t = map.GeoToWorldPosition(LocationProviderFactory.Instance.DefaultLocationProvider.CurrentLocation
             .LatitudeLongitude);
-        Debug.Log(t);
         gameObject.GetComponent<GameManager>().RA_LatLong = t;
+        gameObject.GetComponent<GameManager>().numPistas = 1;
+
+        SceneManager.LoadScene(2);
+    }
+    
+    public void Map_TriggerRA_Pista2()
+    {
+        var map = LocationProviderFactory.Instance.mapManager;
+
+        Vector3 t = map.GeoToWorldPosition(LocationProviderFactory.Instance.DefaultLocationProvider.CurrentLocation
+            .LatitudeLongitude);
+        gameObject.GetComponent<GameManager>().RA_LatLong = t;
+        gameObject.GetComponent<GameManager>().numPistas = 2;
+
+        SceneManager.LoadScene(2);
+    }
+    
+    public void Map_TriggerRA_Pista3()
+    {
+        var map = LocationProviderFactory.Instance.mapManager;
+
+        Vector3 t = map.GeoToWorldPosition(LocationProviderFactory.Instance.DefaultLocationProvider.CurrentLocation
+            .LatitudeLongitude);
+        gameObject.GetComponent<GameManager>().RA_LatLong = t;
+        gameObject.GetComponent<GameManager>().numPistas = 3;
+
         SceneManager.LoadScene(2);
     }
 }

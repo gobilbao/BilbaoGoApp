@@ -16,12 +16,20 @@ public class GameManager : MonoBehaviour
 
     public Text DebugCoord;
 
-    public Button Map_TriggerRA;
     public Vector3 RA_LatLong;
 
     #endregion
 
+    #region RA
+
+    public Punto pistaForRA;
+    public int numPistas;
+
+    #endregion
+
     private List<Punto> mapPoints;
+  
+
     public List<Punto> MapPoints
     {
         get => mapPoints;
@@ -41,11 +49,10 @@ public class GameManager : MonoBehaviour
         {
             String coordinate;
             String[] coordinates = new string[mapPoints.Count];
-            for (int i = 0; i < mapPoints.Count-1; i++)
+            for (int i = 0; i < mapPoints.Count; i++)
             {
                 coordinate = mapPoints[i].Ubicacion.Split('|')[0] + "," + mapPoints[i].Ubicacion.Split('|')[1];
                 coordinates[i] = coordinate;
-                Debug.Log(i + coordinate);
             }
 
             gameObject.GetComponent<SpawnOnMap>().LocationStrings = coordinates;
@@ -64,14 +71,7 @@ public class GameManager : MonoBehaviour
 
     public void changeToMapState()
     {
-        Map_TriggerRA.onClick.AddListener(TriggerRA);
         gameObject.GetComponent<SpawnOnMap>().enabled = true;
-        
     }
 
-    public void TriggerRA()
-    {
-        GetComponent<ButtonActions>().Map_TriggerRA();
-        DebugCoord.text = RA_LatLong.ToString();
-    }
 }
