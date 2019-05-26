@@ -19,10 +19,12 @@ public class ButtonActions : MonoBehaviour
             .LatitudeLongitude);
         gameObject.GetComponent<GameManager>().RA_LatLong = t;
         gameObject.GetComponent<GameManager>().numPistas = 1;
-
-        SceneManager.LoadScene(2);
+        
+        changeToARScene();
     }
-    
+
+
+
     public void Map_TriggerRA_Pista2()
     {
         var map = LocationProviderFactory.Instance.mapManager;
@@ -32,7 +34,8 @@ public class ButtonActions : MonoBehaviour
         gameObject.GetComponent<GameManager>().RA_LatLong = t;
         gameObject.GetComponent<GameManager>().numPistas = 2;
 
-        SceneManager.LoadScene(2);
+        changeToARScene();
+        
     }
     
     public void Map_TriggerRA_Pista3()
@@ -44,6 +47,23 @@ public class ButtonActions : MonoBehaviour
         gameObject.GetComponent<GameManager>().RA_LatLong = t;
         gameObject.GetComponent<GameManager>().numPistas = 3;
 
+        changeToARScene();
+    }
+    
+    
+    private void changeToARScene()
+    {
+        GetComponent<SpawnOnMap>().enabled = false;
         SceneManager.LoadScene(2);
+    }
+
+    public void closeInfo()
+    {
+        GameObject.Find("PanelEncontrado").gameObject.SetActive(false);
+    }
+
+    public void returnToMapScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }

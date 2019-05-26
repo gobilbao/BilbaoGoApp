@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class StatueScript : MonoBehaviour
 {
     private Punto punto;
+
     public Punto Punto
     {
         get => punto;
@@ -16,7 +17,21 @@ public class StatueScript : MonoBehaviour
     public Button btnPista1;
     public Button btnPista2;
     public Button btnPista3;
-    
+
+    private void Start()
+    {
+        if (gameObject.name.Equals("StatueMock"))
+        {
+            Punto p = new Punto();
+            p.Nombre = "Mock";
+            p.Id = "-1";
+            p.Informacion = "Info Mock";
+            p.Pista = "PistaMock1|PistaMock2|PistaMock3";
+            p.Ubicacion = "2.132341,11.8879";
+            punto = p;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.transform.tag.Equals("Player"))
@@ -44,24 +59,26 @@ public class StatueScript : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManager>().pistaForRA = punto;
         }
     }
-    
+
     public void enablePista2()
     {
-        if (!btnPista3.IsActive())
+        if (!btnPista3.IsActive() && btnPista1.IsActive())
         {
             btnPista1.gameObject.SetActive(false);
             btnPista2.gameObject.SetActive(true);
             GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 2;
         }
     }
-    
+
     public void enablePista3()
     {
-        btnPista1.gameObject.SetActive(false);
-        btnPista2.gameObject.SetActive(false);
-        btnPista3.gameObject.SetActive(true);
-        GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 3;
-        
+        if (!btnPista1.IsActive() && btnPista2.IsActive())
+        {
+            btnPista1.gameObject.SetActive(false);
+            btnPista2.gameObject.SetActive(false);
+            btnPista3.gameObject.SetActive(true);
+            GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 3;
+        }
     }
 
     public void disablePista1()
@@ -72,7 +89,7 @@ public class StatueScript : MonoBehaviour
         GameObject.Find("GameManager").GetComponent<GameManager>().pistaForRA = null;
         GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 0;
     }
-    
+
     public void disablePista2()
     {
         btnPista1.gameObject.SetActive(true);
@@ -80,7 +97,7 @@ public class StatueScript : MonoBehaviour
         btnPista3.gameObject.SetActive(false);
         GameObject.Find("GameManager").GetComponent<GameManager>().numPistas = 1;
     }
-    
+
     public void disablePista3()
     {
         btnPista1.gameObject.SetActive(false);

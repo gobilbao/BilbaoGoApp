@@ -568,6 +568,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795266847}
   m_CullTransparentMesh: 0
+--- !u!1001 &813384626
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2673672531405240983, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_Name
+      value: StatueMock
+      objectReference: {fileID: 0}
+    - target: {fileID: 2673672531405240983, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -33.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521747732384565538, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1822817546970562775, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: btnPista1
+      value: 
+      objectReference: {fileID: 795266849}
+    - target: {fileID: 1822817546970562775, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: btnPista2
+      value: 
+      objectReference: {fileID: 1191199013}
+    - target: {fileID: 1822817546970562775, guid: af9684e317ecfcb4eb36d8182b029da4,
+        type: 3}
+      propertyPath: btnPista3
+      value: 
+      objectReference: {fileID: 642893480}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: af9684e317ecfcb4eb36d8182b029da4, type: 3}
 --- !u!21 &846601281
 Material:
   serializedVersion: 6
@@ -2604,7 +2693,7 @@ MonoBehaviour:
         colliderOptions:
           colliderType: 0
         materialOptions:
-          style: 5
+          style: 7
           texturingType: 0
           materials:
           - Materials:
@@ -2614,7 +2703,7 @@ MonoBehaviour:
           atlasInfo: {fileID: 11400000, guid: c422f39ca8fe566479230c87805b3301, type: 2}
           lightStyleOpacity: 1
           darkStyleOpacity: 1
-          colorStyleColor: {r: 0, g: 0, b: 0, a: 0}
+          colorStyleColor: {r: 0.7924528, g: 0.13082945, b: 0.13082945, a: 0}
           samplePalettes: 0
           colorPalette: {fileID: 0}
           customStyleOptions:

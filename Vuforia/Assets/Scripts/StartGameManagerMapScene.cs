@@ -40,6 +40,10 @@ public class StartGameManagerMapScene : MonoBehaviour
         {
             throw new Exception("GameManager not found");
         }
+
+        Invoke("desactivarBotones",2);
+        
+        
     }
 
     public void triggerPista1()
@@ -54,4 +58,12 @@ public class StartGameManagerMapScene : MonoBehaviour
     {
         _manager.GetComponent<ButtonActions>().Map_TriggerRA_Pista3();
     }
+
+    public void desactivarBotones()
+    {
+        btnPista1.gameObject.SetActive(false);
+        btnPista2.gameObject.SetActive(false);
+        btnPista3.gameObject.SetActive(false);
+    }
+    
 }

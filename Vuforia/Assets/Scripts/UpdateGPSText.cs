@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 static class Constantes
 {
@@ -15,8 +16,8 @@ public class UpdateGPSText : MonoBehaviour
     public TextMesh coordenadas;
     
     public GameObject PanelEncontrado;
-    public TextMesh Nombre;
-    public TextMesh Informacion;
+    public Text Nombre;
+    public Text Informacion;
     /*public TextMesh coordenadas;
     public TextMesh coordenadas;*/
 
@@ -34,23 +35,28 @@ public class UpdateGPSText : MonoBehaviour
     public int numeroProximidad;
     private decimal y;
     private decimal x;
-
+    private GameManager _manager;
 
 
     private void Start()
     {
+        _manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         ObtencionDatos();
         gestionarDatos();
+        //A.E.C 26052019 Se encarga de gestionar la pista que debe mostrar
+        pista();
+        //A.E.C 26052019 Obtenemos la cercania con la estatua
+        distancia();
     }
 
     private void ObtencionDatos()
     {
         
-        NombreEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Nombre;
-        CoordenadasEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Ubicacion;
-        InformacionEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Informacion;
-        PistaEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Pista;
-        numeroProximidad = gameObject.GetComponent<GameManager>().numPistas;
+        NombreEstatua = _manager.pistaForRA.Nombre;
+        CoordenadasEstatua = _manager.pistaForRA.Ubicacion;
+        InformacionEstatua = _manager.pistaForRA.Informacion;
+        PistaEstatua = _manager.pistaForRA.Pista;
+        numeroProximidad = _manager.numPistas;
         
     }
 
@@ -90,7 +96,7 @@ public class UpdateGPSText : MonoBehaviour
 
 
         //A.E.C 26052019 Separamos coordenadas X e Y de el string
-        string[] coord = CoordenadasEstatua.Split('|');
+        string[] coord = CoordenadasEstatua.Split(',');
 
         y = decimal.Parse(coord[0]);
         x = decimal.Parse(coord[1]);
@@ -120,11 +126,9 @@ public class UpdateGPSText : MonoBehaviour
     private void Update()
     {
 
-        //A.E.C 26052019 Se encarga de gestionar la pista que debe mostrar
-        pista();
+        
 
-        //A.E.C 26052019 Obtenemos la cercania con la estatua
-        distancia();
+        
 
         coordenadas.text =  NombreEstatua + Environment.NewLine +
                             _PistaEstatua;
