@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 static class Constantes
 {
@@ -11,83 +13,122 @@ static class Constantes
 public class UpdateGPSText : MonoBehaviour
 {
     public TextMesh coordenadas;
-    public TextMesh coor;
-    private string coordenadasOtro;
-    private string encontrado;
+    
+    public GameObject PanelEncontrado;
+    public TextMesh Nombre;
+    public TextMesh Informacion;
+    /*public TextMesh coordenadas;
+    public TextMesh coordenadas;*/
+
+    //A.E.C 26052019 Variables que alojan los datos obtenidos de Mapbox
+    private string NombreEstatua;
+    private string CoordenadasEstatua;
+    private string InformacionEstatua;
+    private string PistaEstatua;
+
+    //A.E.C 26052019 Variables que alojan los datos especificos de coordenadas y pistas
+    List<string> pistas = new List<string>();
+    List<string> cordenadas = new List<string>();
+    private string _CoordenadasEstatua;
+    private string _PistaEstatua;
+    public int numeroProximidad;
+    private decimal y;
+    private decimal x;
 
 
-    private void calcularDistancia()
+
+    private void Start()
     {
-        coordenadasOtro = Data.Instance.puntos[0].Ubicacion;
+        ObtencionDatos();
+        gestionarDatos();
+    }
 
-        /*int valorY= 1;
-        int valorX = 1;
+    private void ObtencionDatos()
+    {
         
-        string[] coordenadasSitio =coordenadasOtro.Split('|');
+        NombreEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Nombre;
+        CoordenadasEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Ubicacion;
+        InformacionEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Informacion;
+        PistaEstatua = gameObject.GetComponent<GameManager>().pistaForRA.Pista;
+        numeroProximidad = gameObject.GetComponent<GameManager>().numPistas;
+        
+    }
 
-        if (coordenadasSitio.Length < 2)
+    private void pista()
+    {
+
+        //A.E.C 26052019 Concretamos la proximidad para mostrar diferentes pistas
+        switch (numeroProximidad)
         {
-            //Debug.Log("No contiene los parametros correctos");
-            return;
+            case 1:
+                _PistaEstatua = pistas[0];
+                break;
+            case 2:
+                _PistaEstatua = pistas[1];
+                break;
+            case 3:
+                _PistaEstatua = "Encontrado";
+
+                break;
         }
+    }
+
+    private List<string> crearLista(string s)
+    {
+        List<string> a = new List<string>();
+        string[] p = s.Split('|');
+        a.AddRange(p);
+
+        return a;
+    }
+
+    private void gestionarDatos()
+    {
+        //A.E.C 26052019 Creamos listas para almacenar todas las pistas y la coordenada
+        pistas = crearLista(PistaEstatua);
+        cordenadas = crearLista(CoordenadasEstatua);
+
+
+        //A.E.C 26052019 Separamos coordenadas X e Y de el string
+        string[] coord = CoordenadasEstatua.Split('|');
+
+        y = decimal.Parse(coord[0]);
+        x = decimal.Parse(coord[1]);
+
+        
+    }
+
+    private void distancia()
+    {
 
       
-        decimal Y = decimal.Parse(coordenadasSitio[0]);
-        decimal X = decimal.Parse(coordenadasSitio[1]);
 
-        if (Y < 0){
-            valorY = -1;
-        }
-        if(X < 0)
+        if (_PistaEstatua.Equals("Encontrado"))
         {
-            valorX = -1;
-        }
-
-        //Debug.Log("PistaY: " + (Y - Constants.Pista * valorY) + "|" + (Y + Constants.Pista * valorY));
-        //Debug.Log("PistaX: " + (X - Constants.Pista * valorX) + "|" + (X + Constants.Pista * valorX));
-
-
-        if ((Data.Instance.latitude> (Y - (Constants.Encontrada*valorY)) && Data.Instance.latitude < (Y + (Constants.Encontrada * valorY))) && ((Data.Instance.longitude < (X - (Constants.Encontrada*valorX) ) ) && (Data.Instance.longitude > (X + (Constants.Encontrada*valorX)))))
-        {
-
-            encontrado = (Y - (Constants.Pista * valorY))+"Encontrado"+(Y + (Constants.Pista * valorY));
-      
-
-        }else if ((Data.Instance.latitude > (Y - (Constants.Pista * valorY)) && Data.Instance.latitude < (Y + (Constants.Pista * valorY))) && ((Data.Instance.longitude < (X - (Constants.Pista * valorX)) && Data.Instance.longitude > (X + (Constants.Pista * valorX)))))
-        {
-            
-            encontrado = "Pista";
-            
-
-
+            PanelEncontrado.SetActive(true);
+            Nombre.text = NombreEstatua;
+            Informacion.text = InformacionEstatua;
         }
         else
         {
-            encontrado = "No encontrado";
+            PanelEncontrado.SetActive(false);
         }
 
-
-
-
-
-
-
-    */
+        
     }
 
     private void Update()
     {
-        // calcularDistancia();
 
-        /*coordenadas.text = "Lat: " + Data.Instance.latitude + Environment.NewLine +
-                           "Long: " + Data.Instance.longitude + Environment.NewLine +
-                           "Estatua: " + encontrado + Environment.NewLine +
-                           "Nombre estatua: " + Data.Instance.puntos[0].Nombre + Environment.NewLine +
-                           "Pista: " + Data.Instance.puntos[0].Pista + Environment.NewLine +
-                           "Ubicacion: " + Data.Instance.puntos[0].Ubicacion + Environment.NewLine +
-                           "Informacion: " + Data.Instance.puntos[0].Informacion + Environment.NewLine +
-                           "Giroscopio:" + Data.Instance.ath.ToString();
-                           */
+        //A.E.C 26052019 Se encarga de gestionar la pista que debe mostrar
+        pista();
+
+        //A.E.C 26052019 Obtenemos la cercania con la estatua
+        distancia();
+
+        coordenadas.text =  NombreEstatua + Environment.NewLine +
+                            _PistaEstatua;
+
     }
 
 }
