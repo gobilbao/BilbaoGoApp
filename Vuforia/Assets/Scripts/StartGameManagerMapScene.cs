@@ -41,7 +41,7 @@ public class StartGameManagerMapScene : MonoBehaviour
             throw new Exception("GameManager not found");
         }
 
-        Invoke("desactivarBotones",2);
+        Invoke("desactivarBotones", 0.5f);
         
         
     }

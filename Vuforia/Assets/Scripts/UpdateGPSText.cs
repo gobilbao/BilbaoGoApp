@@ -125,11 +125,6 @@ public class UpdateGPSText : MonoBehaviour
 
     private void Update()
     {
-
-        
-
-        
-
         coordenadas.text =  NombreEstatua + Environment.NewLine +
                             _PistaEstatua;
 
